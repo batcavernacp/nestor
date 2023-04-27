@@ -26,6 +26,18 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Roadmap
+
+- [ ] typeorm(postgres)
+
+- [ ] swagger
+
+- [ ] auth(firebase)
+
+- [ ] monitor(prometheus + grafana)
+
+- [ ] trace(jaeger)
+
 ## Installation
 
 ```bash
