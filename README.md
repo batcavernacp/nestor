@@ -28,7 +28,7 @@
 
 ## Roadmap
 
-- [ ] typeorm(postgres)
+- [x] typeorm(postgres)
 
 - [ ] swagger
 
