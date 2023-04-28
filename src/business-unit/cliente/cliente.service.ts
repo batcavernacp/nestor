@@ -7,10 +7,10 @@ import { ClienteEntity } from './cliente.entity';
 export class ClienteService {
   constructor(
     @InjectRepository(ClienteEntity)
-    private bobinaRepository: Repository<ClienteEntity>,
+    private clienteRepository: Repository<ClienteEntity>,
   ) {}
 
   findById(id: number) {
-    return this.bobinaRepository.findOne({ where: { id } });
+    return this.clienteRepository.findOne({ where: { id } });
   }
 }

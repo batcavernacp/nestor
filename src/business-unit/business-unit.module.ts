@@ -13,10 +13,10 @@ import { VendedorModule } from './vendedor/vendedor.module';
 
 @Module({
   imports: [
-    FamiliaModule,
     BobinaModule,
-    EntradaModule,
     ClienteModule,
+    EntradaModule,
+    FamiliaModule,
     FornecedorModule,
     GrupoModule,
     JumboModule,
