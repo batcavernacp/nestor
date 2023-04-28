@@ -9,7 +9,24 @@ export class BobinaService {
     @InjectRepository(BobinaEntity)
     private bobinaRepository: Repository<BobinaEntity>,
   ) {}
+
   findAll() {
     return this.bobinaRepository.find();
+  }
+
+  findOne(id: number) {
+    return this.bobinaRepository.findOneBy({ id });
+  }
+
+  create(bobina: BobinaEntity) {
+    return this.bobinaRepository.save(bobina);
+  }
+
+  update(bobina: BobinaEntity) {
+    return this.bobinaRepository.save(bobina);
+  }
+
+  delete(id: number) {
+    return this.bobinaRepository.delete({ id });
   }
 }
