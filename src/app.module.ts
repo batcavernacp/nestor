@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { PostgresModule } from './config/postgres/postgres.module';
 import { BusinessUnitModule } from './business-unit/business-unit.module';
 import { ConfigModule } from '@nestjs/config';
-import { LoggingInterceptor } from './common/logging/logging.interceptor';
 import { CommonModule } from './common/common.module';
 
 @Module({
