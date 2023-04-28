@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Logger } from '@nestjs/common';
 import { AppService } from './app.service';
-import { MetricsService } from './services/metrics.service';
+import { MetricsService } from './app/metrics/metrics.service';
 
 @Controller()
 export class AppController {
@@ -8,6 +8,7 @@ export class AppController {
   }
 
   @Get()
+  // @Log("/")
   getHello(): string {
     this.logService.log("/")
 

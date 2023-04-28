@@ -3,19 +3,22 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './providers/database/database.module';
 import { PrometheusModule, makeCounterProvider } from '@willsoto/nestjs-prometheus';
-import { MetricsService } from './services/metrics.service';
+import { MetricsService } from './app/metrics/metrics.service';
+import { FamiliaModule } from './app/familia/familia.module';
+import { FamiliaController } from './app/familia/familia.controller';
+import { MetricsModule } from './app/metrics/metrics.module';
 
 @Module({
-  imports: [DatabaseModule, PrometheusModule.register()],
-  controllers: [AppController],
+  imports: [
+    PrometheusModule.register(),
+    DatabaseModule,
+    FamiliaModule,
+    MetricsModule
+  ],
+  controllers: [AppController, FamiliaController],
   providers: [
     AppService,
-    MetricsService,
-    makeCounterProvider({
-      name: "visita",
-      help: "metric_help",
-      labelNames: ["uri"],
-    }),
   ],
 })
-export class AppModule { }
+export class AppModule {
+}
