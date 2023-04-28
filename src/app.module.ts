@@ -1,24 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { DatabaseModule } from './providers/database/database.module';
-import { PrometheusModule, makeCounterProvider } from '@willsoto/nestjs-prometheus';
-import { MetricsService } from './app/metrics/metrics.service';
-import { FamiliaModule } from './app/familia/familia.module';
-import { FamiliaController } from './app/familia/familia.controller';
-import { MetricsModule } from './app/metrics/metrics.module';
+import { PostgresModule } from './config/postgres/postgres.module';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
+import { BusinessUnitModule } from './business-unit/business-unit.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [
-    PrometheusModule.register(),
-    DatabaseModule,
-    FamiliaModule,
-    MetricsModule
-  ],
-  controllers: [AppController, FamiliaController],
-  providers: [
-    AppService,
-  ],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), PrometheusModule.register(), PostgresModule, BusinessUnitModule],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {
-}
+export class AppModule {}
