@@ -1,8 +1,10 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { BobinaService } from './bobina.service';
 import { BobinaEntity } from './bobina.entity';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('bobinas')
+@ApiTags('bobinas')
 export class BobinaController {
   constructor(private readonly bobinaService: BobinaService) {}
 
@@ -12,7 +14,7 @@ export class BobinaController {
   }
 
   @Get(':id')
-  findOne(id: number) {
+  findOne(@Param('id') id: string) {
     return this.bobinaService.findOne(id);
   }
 
@@ -27,7 +29,7 @@ export class BobinaController {
   }
 
   @Delete(':id')
-  delete(id: number) {
+  delete(@Param('id') id: string) {
     return this.bobinaService.delete(id);
   }
 }

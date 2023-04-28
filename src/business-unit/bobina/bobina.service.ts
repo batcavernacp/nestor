@@ -14,7 +14,7 @@ export class BobinaService {
     return this.bobinaRepository.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.bobinaRepository.findOneBy({ id });
   }
 
@@ -26,7 +26,7 @@ export class BobinaService {
     return this.bobinaRepository.save(bobina);
   }
 
-  delete(id: number) {
+  delete(id: string) {
     return this.bobinaRepository.delete({ id });
   }
 }

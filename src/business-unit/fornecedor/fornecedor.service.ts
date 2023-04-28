@@ -14,7 +14,7 @@ export class FornecedorService {
     return this.fornecedorRepository.find();
   }
 
-  findById(id: number): Promise<FornecedorEntity> {
+  findById(id: string): Promise<FornecedorEntity> {
     return this.fornecedorRepository.findOne({ where: { id } });
   }
 }

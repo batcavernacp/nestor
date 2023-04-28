@@ -17,4 +17,16 @@ export class FamiliaService {
   async create(familia: FamiliaEntity): Promise<FamiliaEntity> {
     return this.familiaRepository.save(familia);
   }
+
+  async findOne(id: string): Promise<FamiliaEntity> {
+    return this.familiaRepository.findOneBy({ id });
+  }
+
+  async update(familia: FamiliaEntity): Promise<FamiliaEntity> {
+    return this.familiaRepository.save(familia);
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.familiaRepository.delete({ id });
+  }
 }

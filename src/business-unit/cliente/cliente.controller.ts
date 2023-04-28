@@ -6,7 +6,7 @@ export class ClienteController {
   constructor(private readonly clienteService: ClienteService) {}
 
   @Get(':id')
-  async getById(@Param('id') id: number) {
+  async getById(@Param('id') id: string) {
     const cliente = await this.clienteService.findById(id);
 
     if (!cliente) {
