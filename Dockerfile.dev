@@ -1,0 +1,13 @@
+# Specify a base image
+FROM node:18
+
+# Specify a working directory
+WORKDIR '/app'
+
+RUN yarn global add @nestjs/cli
+
+# Install dependencies
+RUN yarn
+
+# Default command
+CMD ["yarn", "start:dev"]
