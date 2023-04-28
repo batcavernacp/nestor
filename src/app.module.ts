@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { PostgresModule } from './config/postgres/postgres.module';
-import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { BusinessUnitModule } from './business-unit/business-unit.module';
 import { ConfigModule } from '@nestjs/config';
+import { LoggingInterceptor } from './common/logging/logging.interceptor';
+import { CommonModule } from './common/common.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), PrometheusModule.register(), PostgresModule, BusinessUnitModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), PostgresModule, BusinessUnitModule, CommonModule],
   controllers: [],
-  providers: [],
 })
 export class AppModule {}

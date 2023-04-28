@@ -15,6 +15,6 @@ export class BobinaEntity extends EntityBaseModel<BobinaEntity> implements IBobi
   @ManyToOne(() => JumboEntity)
   jumbo: IJumbo;
 
-  @VirtualColumn({ query: () => 'SELECT CONCAT(largura, "1") FROM bobina', type: 'text' })
+  @VirtualColumn({ query: () => 'SELECT CONCAT(largura) FROM bobinas', type: 'text' })
   codigoBarra: string;
 }
