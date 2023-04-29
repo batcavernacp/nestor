@@ -5,9 +5,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Field, ObjectType } from '@nestjs/graphql';
+import { IEntityBase } from './entity-base.interface';
 
 @ObjectType({ description: 'recipe ' })
-export abstract class EntityBaseModel<Model> {
+export abstract class EntityBaseModel<Model> implements IEntityBase {
   @PrimaryGeneratedColumn('uuid')
   @Field()
   id: string;
