@@ -12,6 +12,6 @@ export class GrupoService {
   ) {}
 
   create(grupo: GrupoDto) {
-    return this.grupoRepository.save(new GrupoEntity(grupo));
+    return this.grupoRepository.save(grupo);
   }
 }

@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
-import { GrupoController } from './grupo.controller';
+import { GrupoResolver } from './grupo.resolver';
 import { GrupoService } from './grupo.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GrupoEntity } from './grupo.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([GrupoEntity])],
-  controllers: [GrupoController],
-  providers: [GrupoService],
+  providers: [GrupoService, GrupoResolver],
 })
 export class GrupoModule {}

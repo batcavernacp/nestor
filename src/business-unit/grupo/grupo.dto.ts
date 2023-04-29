@@ -1,14 +1,10 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { Field, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class GrupoDto {
-  @ApiProperty()
-  @IsNumber()
-  @IsNotEmpty()
+  @Field()
   codigo: number;
 
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
+  @Field()
   nome: string;
 }
