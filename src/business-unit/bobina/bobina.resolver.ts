@@ -8,17 +8,17 @@ export class BobinaResolver {
   constructor(@Inject(BobinaService) private readonly bobinaService: BobinaService) {}
 
   @Query(() => [BobinaEntity])
-  findAll(): Promise<BobinaEntity[]> {
+  bobinas(): Promise<BobinaEntity[]> {
     return this.bobinaService.findAll();
   }
 
   @Query(() => BobinaEntity)
-  findOne(@Args('id') id: string) {
+  bobina(@Args('id') id: string) {
     return this.bobinaService.findOne(id);
   }
 
   @Mutation(() => BobinaEntity)
-  create(@Body('bobina') bobina: CreateBobinaDto) {
+  createBobina(@Body('bobina') bobina: CreateBobinaDto) {
     return this.bobinaService.create(bobina);
   }
 }
