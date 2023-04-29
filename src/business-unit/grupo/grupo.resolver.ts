@@ -1,7 +1,7 @@
 import { Inject } from '@nestjs/common';
 import { GrupoService } from './grupo.service';
 import { GrupoDto } from './grupo.dto';
-import { Args, Mutation } from '@nestjs/graphql';
+import { Args, Mutation, Query } from '@nestjs/graphql';
 import { GrupoEntity } from './grupo.entity';
 
 export class GrupoResolver {
@@ -10,5 +10,10 @@ export class GrupoResolver {
   @Mutation(() => GrupoEntity)
   createGrupo(@Args('grupo') grupo: GrupoDto) {
     return this.grupoService.create(grupo);
+  }
+
+  @Query(() => [GrupoEntity])
+  grupos() {
+    return this.grupoService.findAll();
   }
 }

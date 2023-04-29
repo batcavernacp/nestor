@@ -14,4 +14,12 @@ export class GrupoService {
   create(grupo: GrupoDto) {
     return this.grupoRepository.save(grupo);
   }
+
+  findAll(): Promise<GrupoEntity[]> {
+    return this.grupoRepository.find();
+  }
+
+  findById(id: string): Promise<GrupoEntity> {
+    return this.grupoRepository.findOne({ where: { id } });
+  }
 }
