@@ -4,9 +4,9 @@ import { Counter } from 'prom-client';
 
 @Injectable()
 export class MetricsService {
-  constructor(@InjectMetric('visita') private counter: Counter<string>) {}
+  constructor(@InjectMetric('visita_count') private counter: Counter<string>) {}
 
-  log(uri: string) {
-    this.counter.inc({ uri });
+  log(uri: string, method: string) {
+    this.counter.inc({ uri, method });
   }
 }

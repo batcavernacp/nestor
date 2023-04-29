@@ -15,7 +15,7 @@ export class BobinaEntity extends EntityBaseModel<BobinaEntity> implements IBobi
   comprimento: number;
 
   @ManyToOne(() => JumboEntity)
-  @ApiProperty({ type: 'number' })
+  @ApiProperty({ type: () => JumboEntity })
   jumbo: IJumbo;
 
   @ApiProperty()

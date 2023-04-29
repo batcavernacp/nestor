@@ -7,9 +7,9 @@ import { makeCounterProvider } from '@willsoto/nestjs-prometheus';
   providers: [
     MetricsService,
     makeCounterProvider({
-      name: 'visita',
-      help: 'metric_help',
-      labelNames: ['uri'],
+      name: 'visita_count',
+      help: 'contador de chamadas',
+      labelNames: ['uri', 'method'],
     }),
   ],
   exports: [MetricsService],

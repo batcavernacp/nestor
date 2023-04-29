@@ -13,7 +13,7 @@ export class LoggingInterceptor implements NestInterceptor {
       return next.handle();
     }
 
-    this.metricsService.log(request.path);
+    this.metricsService.log(request.route.path, request.method);
 
     return next.handle();
     // .pipe(tap((r) => console.log(r, `After... ${Date.now() - now}ms`)));
