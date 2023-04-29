@@ -1,14 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CreateFamiliaDto {
+export class CreateClienteDto {
   @ApiProperty()
   @IsNumber()
   @IsNotEmpty()
   codigo: number;
 
-  @IsString()
   @ApiProperty()
+  @IsString()
   @IsNotEmpty()
   nome: string;
 }
