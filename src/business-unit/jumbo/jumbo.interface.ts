@@ -4,7 +4,7 @@ import { IFornecedor } from '../fornecedor/fornecedor.interface';
 import { IGrupo } from '../grupo/grupo.interface';
 
 export interface IJumbo extends IEntityBase {
-  codigo: string;
+  codigo: number;
   nome: string;
   referencia: string;
   familia: IFamilia;

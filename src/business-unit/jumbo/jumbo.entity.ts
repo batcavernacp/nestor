@@ -9,8 +9,8 @@ import { FornecedorEntity } from '../fornecedor/fornecedor.entity';
 
 @Entity({ name: 'jumbos' })
 export class JumboEntity extends EntityBaseModel<JumboEntity> implements IJumbo {
-  @Column({ length: 30 })
-  codigo: string;
+  @Column('int')
+  codigo: number;
 
   @Column('text')
   nome: string;

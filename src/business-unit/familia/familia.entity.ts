@@ -5,9 +5,9 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity({ name: 'familias' })
 export class FamiliaEntity extends EntityBaseModel<FamiliaEntity> implements IFamilia {
-  @Column({ length: 30 })
+  @Column('int')
   @ApiProperty()
-  codigo: string;
+  codigo: number;
 
   @ApiProperty()
   @Column('text')
