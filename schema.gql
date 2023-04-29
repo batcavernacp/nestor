@@ -1,0 +1,188 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Familia {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  codigo: Float!
+  nome: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Grupo {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  codigo: Float!
+  nome: String!
+}
+
+type Fornecedor {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  codigo: Float!
+  nome: String!
+}
+
+type Jumbo {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  codigo: Float!
+  nome: String!
+  referencia: String!
+  comprimento: Float!
+  largura: Float!
+  familia: Familia!
+  grupo: Grupo!
+  fornecedor: Fornecedor!
+}
+
+type Bobina {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  largura: Float!
+  comprimento: Float!
+  jumbo: Jumbo!
+  codigoBarra: String!
+}
+
+type Entrada {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  jumbo: Jumbo!
+  quantidade: Float!
+}
+
+type Cliente {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  codigo: Float!
+  nome: String!
+}
+
+type Vendedor {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  codigo: Float!
+  nome: String!
+}
+
+type OrdemProducao {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  pedidos: [Pedido!]!
+}
+
+type Pedido {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  sequencia: Float!
+  vendedor: Vendedor!
+  cliente: Cliente!
+  movimentos: [Movimento!]!
+  ordemProducao: OrdemProducao
+}
+
+type Movimento {
+  id: String!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  bobina: Bobina!
+  quantidade: Float!
+  pedido: Pedido!
+}
+
+type Query {
+  bobinas: [Bobina!]!
+  bobina(id: String!): Bobina!
+  jumbos: [Jumbo!]!
+  vendedor(id: String!): Cliente!
+  vendedores: [Vendedor!]!
+  findAll: [Entrada!]!
+  familias: [Familia!]!
+  familia(id: String!): Familia!
+  fornecedores: [Fornecedor!]!
+  grupos: [Grupo!]!
+  movimentos: [Movimento!]!
+  ordensProducao: [OrdemProducao!]!
+  pedidos: [Pedido!]!
+}
+
+type Mutation {
+  createBobina(bobina: CreateBobinaDto!): Bobina!
+  createJumbo(jumbo: JumboDto!): Jumbo!
+  deleteVendedor(id: String!): Cliente!
+  editVendedor(id: String!): Cliente!
+  createVendedor(vendedor: VendedorDto!): Vendedor!
+  create: Entrada!
+  createFamilia(familia: CreateFamiliaDto!): Familia!
+  editFamilia(familia: CreateFamiliaDto!, id: String!): Familia!
+  deleteFamilia(id: String!): Familia!
+  createFornecedor(fornecedor: FornecedorDto!): Fornecedor!
+  createGrupo(grupo: GrupoDto!): Grupo!
+  createMovimento: Movimento!
+  createOrdemProducao(ordemProducao: OrdemProducaoDto!): OrdemProducao!
+  createPedido(pedido: PedidoDto!): Pedido!
+}
+
+input CreateBobinaDto {
+  largura: Float!
+  comprimento: Float!
+  jumbo: ID!
+}
+
+input JumboDto {
+  codigo: ID!
+  nome: String!
+  referencia: String!
+  comprimento: Float!
+  largura: Float!
+  familia: ID!
+  grupo: ID!
+  fornecedor: ID!
+}
+
+input VendedorDto {
+  codigo: Float!
+  nome: String!
+}
+
+input CreateFamiliaDto {
+  codigo: Float!
+  nome: String!
+}
+
+input FornecedorDto {
+  codigo: Float!
+  nome: String!
+}
+
+input GrupoDto {
+  codigo: Float!
+  nome: String!
+}
+
+input OrdemProducaoDto {
+  pedidos: [ID!]!
+}
+
+input PedidoDto {
+  sequencia: Float!
+  vendedor: ID!
+  cliente: ID!
+  movimentos: [ID!]!
+}

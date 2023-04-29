@@ -14,4 +14,8 @@ export class EntradaService {
   create(entrada: EntradaDto) {
     return this.entradaRepository.save(new EntradaEntity(entrada));
   }
+
+  findAll() {
+    return this.entradaRepository.find();
+  }
 }

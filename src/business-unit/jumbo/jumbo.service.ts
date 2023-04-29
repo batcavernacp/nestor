@@ -18,4 +18,8 @@ export class JumboService {
   findAll(): Promise<JumboEntity[]> {
     return this.jumboRepository.find();
   }
+
+  findOne(id: string): Promise<JumboEntity> {
+    return this.jumboRepository.findOneBy({ id });
+  }
 }

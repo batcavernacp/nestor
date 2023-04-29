@@ -1,10 +1,10 @@
-import { Entity, Column, VirtualColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { EntityBaseModel } from '../../common/entity/entity-base.model';
 import { IBobina } from './bobina.interface';
 import { JumboEntity } from '../jumbo/jumbo.entity';
 import { IJumbo } from '../jumbo/jumbo.interface';
-import { ApiProperty } from '@nestjs/swagger';
 import { Field, ObjectType } from '@nestjs/graphql';
+
 @Entity({ name: 'bobinas' })
 @ObjectType('Bobina')
 export class BobinaEntity extends EntityBaseModel<BobinaEntity> implements IBobina {
@@ -22,6 +22,5 @@ export class BobinaEntity extends EntityBaseModel<BobinaEntity> implements IBobi
   jumbo: IJumbo;
 
   @Field()
-  @VirtualColumn({ query: () => 'SELECT CONCAT(largura) FROM bobinas', type: 'text' })
   codigoBarra: string;
 }

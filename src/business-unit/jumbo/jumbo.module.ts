@@ -7,5 +7,6 @@ import { JumboEntity } from './jumbo.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([JumboEntity])],
   providers: [JumboService, JumboResolver],
+  exports: [JumboService],
 })
 export class JumboModule {}

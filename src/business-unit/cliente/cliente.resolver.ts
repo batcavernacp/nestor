@@ -1,7 +1,6 @@
-import { Body, Delete, Get, Inject, Param, Post, Put } from '@nestjs/common';
+import { Body, Inject } from '@nestjs/common';
 import { ClienteService } from './cliente.service';
 import { CreateClienteDto } from './dto/create-cliente.dto';
-import { ApiOkResponse } from '@nestjs/swagger';
 import { ClienteEntity } from './cliente.entity';
 import { Args, Mutation, Query } from '@nestjs/graphql';
 
