@@ -7,13 +7,15 @@ import { MetricsService } from '../metrics/metrics.service';
 export class LoggingInterceptor implements NestInterceptor {
   constructor(private readonly metricsService: MetricsService) {}
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const request = context.switchToHttp().getRequest<Request>();
+    try {
+      const request = context.switchToHttp().getRequest<Request>();
 
-    if (request.path === '/metrics') {
-      return next.handle();
-    }
+      if (request.path === '/metrics') {
+        return next.handle();
+      }
 
-    this.metricsService.log(request.route.path, request.method);
+      this.metricsService.log(request.route.path, request.method);
+    } catch (e) {}
 
     return next.handle();
     // .pipe(tap((r) => console.log(r, `After... ${Date.now() - now}ms`)));

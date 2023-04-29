@@ -40,8 +40,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
       );
 
       this.httpAdapter.reply(resposta, body, status);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 }
