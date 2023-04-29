@@ -20,6 +20,6 @@ export class FornecedorService {
   }
 
   create(fornecedor: FornecedorDto) {
-    return this.fornecedorRepository.save(new FornecedorEntity(fornecedor));
+    return this.fornecedorRepository.save(fornecedor);
   }
 }
