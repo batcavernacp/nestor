@@ -4,27 +4,23 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ApiProperty } from '@nestjs/swagger';
-import { Exclude } from 'class-transformer';
+import { Field, ObjectType } from '@nestjs/graphql';
 
+@ObjectType({ description: 'recipe ' })
 export abstract class EntityBaseModel<Model> {
   @PrimaryGeneratedColumn('uuid')
-  @ApiProperty()
-  @Exclude({ toClassOnly: true }) // id não precisa enviar quando vai criar
+  @Field()
   id: string;
 
   @CreateDateColumn()
-  @ApiProperty()
-  @Exclude()
+  @Field()
   createdAt: Date;
 
   @UpdateDateColumn()
-  @ApiProperty()
-  @Exclude()
+  @Field()
   updateAt: Date;
 
   @DeleteDateColumn()
-  @Exclude()
   deletedAt: Date;
 
   constructor(partial: Partial<Model>) {
