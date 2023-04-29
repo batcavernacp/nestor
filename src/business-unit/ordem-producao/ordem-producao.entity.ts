@@ -5,7 +5,10 @@ import { IPedido } from '../pedido/pedido.interface';
 import { PedidoEntity } from '../pedido/pedido.entity';
 
 @Entity({ name: 'ordensProducao' })
-export class OrdemProducaoEntity extends EntityBaseModel<OrdemProducaoEntity> implements IOrdemProducao {
+export class OrdemProducaoEntity
+  extends EntityBaseModel<OrdemProducaoEntity>
+  implements IOrdemProducao
+{
   @OneToMany(() => PedidoEntity, (pedido) => pedido.ordemProducao)
   pedidos: IPedido[];
 }

@@ -9,7 +9,7 @@ export interface IJumbo extends IEntityBase {
   referencia: string;
   familia: IFamilia;
   grupo: IGrupo;
-  fornecedores: IFornecedor[];
+  fornecedor: IFornecedor;
   comprimento: number;
   largura: number;
 }

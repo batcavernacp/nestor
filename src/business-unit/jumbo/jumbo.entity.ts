@@ -1,4 +1,4 @@
-import { Entity, Column, ManyToMany, JoinColumn, JoinTable, ManyToOne } from 'typeorm';
+import { Entity, Column, JoinColumn, ManyToOne } from 'typeorm';
 import { EntityBaseModel } from '../../common/entity/entity-base.model';
 import { IJumbo } from './jumbo.interface';
 import { IFamilia } from '../familia/familia.interface';
@@ -32,7 +32,7 @@ export class JumboEntity extends EntityBaseModel<JumboEntity> implements IJumbo 
   @JoinColumn()
   grupo: IGrupo;
 
-  @ManyToMany(() => FornecedorEntity)
-  @JoinTable()
-  fornecedores: FornecedorEntity[];
+  @ManyToOne(() => FornecedorEntity)
+  @JoinColumn()
+  fornecedor: FornecedorEntity;
 }
