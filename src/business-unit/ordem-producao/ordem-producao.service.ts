@@ -14,4 +14,8 @@ export class OrdemProducaoService {
   create(ordemProducao: OrdemProducaoDto) {
     return this.ordemProducaoRepository.save(new OrdemProducaoEntity(ordemProducao));
   }
+
+  findAll() {
+    return this.ordemProducaoRepository.find();
+  }
 }

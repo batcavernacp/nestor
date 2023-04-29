@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
-import { PedidoController } from './pedido.controller';
+import { PedidoResolver } from './pedido.resolver';
 import { PedidoService } from './pedido.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PedidoEntity } from './pedido.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([PedidoEntity])],
-  controllers: [PedidoController],
-  providers: [PedidoService],
+  providers: [PedidoService, PedidoResolver],
 })
 export class PedidoModule {}

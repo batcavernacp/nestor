@@ -12,6 +12,10 @@ export class VendedorService {
   ) {}
 
   create(vendedor: VendedorDto) {
-    return this.vendedorRepository.save(new VendedorEntity(vendedor));
+    return this.vendedorRepository.save(vendedor);
+  }
+
+  findAll(): Promise<VendedorEntity[]> {
+    return this.vendedorRepository.find();
   }
 }

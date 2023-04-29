@@ -1,14 +1,10 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Field, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class VendedorDto {
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsNumber()
+  @Field()
   codigo: number;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
+  @Field()
   nome: string;
 }

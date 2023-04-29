@@ -14,4 +14,8 @@ export class MovimentoService {
   create(movimento: MovimentoDto) {
     return this.movimentoRepository.save(new MovimentoEntity(movimento));
   }
+
+  findAll() {
+    return this.movimentoRepository.find();
+  }
 }

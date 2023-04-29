@@ -10,7 +10,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 import { IFornecedor } from '../fornecedor/fornecedor.interface';
 
 @Entity({ name: 'jumbos' })
-@ObjectType()
+@ObjectType('Jumbo')
 export class JumboEntity extends EntityBaseModel<JumboEntity> implements IJumbo {
   @Column('int')
   @Field()

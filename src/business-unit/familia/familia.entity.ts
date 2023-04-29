@@ -4,7 +4,7 @@ import { IFamilia } from './familia.interface';
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @Entity({ name: 'familias' })
-@ObjectType({ description: 'familia ' })
+@ObjectType('Familia')
 export class FamiliaEntity extends EntityBaseModel<FamiliaEntity> implements IFamilia {
   @Column('int')
   @Field()

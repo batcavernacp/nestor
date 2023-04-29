@@ -1,19 +1,19 @@
 import { IVendedor } from '../vendedor/vendedor.interface';
 import { ICliente } from '../cliente/cliente.interface';
 import { IMovimento } from '../movimento/movimento.interface';
-import { IsNotEmpty, IsNumber, IsUUID } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { Field, ID, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class PedidoDto {
-  @IsNumber()
-  @IsNotEmpty()
-  @ApiProperty()
+  @Field()
   sequencia: number;
 
-  @IsNotEmpty()
-  @ApiProperty({ type: 'string', format: 'uuid' })
-  @IsUUID()
+  @Field(() => ID)
   vendedor: IVendedor;
+
+  @Field(() => ID)
   cliente: ICliente;
+
+  @Field(() => [ID])
   movimentos: IMovimento[];
 }

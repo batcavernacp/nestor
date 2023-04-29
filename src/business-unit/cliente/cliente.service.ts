@@ -20,7 +20,7 @@ export class ClienteService {
   }
 
   create(cliente: CreateClienteDto) {
-    return this.clienteRepository.save(new ClienteEntity(cliente));
+    return this.clienteRepository.save(cliente);
   }
 
   update(id: string, cliente: CreateClienteDto) {

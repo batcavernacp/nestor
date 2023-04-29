@@ -1,18 +1,16 @@
-import { Entity, Column } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { EntityBaseModel } from '../../common/entity/entity-base.model';
 import { IVendedor } from './vendedor.interface';
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { Field, ObjectType } from '@nestjs/graphql';
 
 @Entity({ name: 'vendedores' })
+@ObjectType('Vendedor')
 export class VendedorEntity extends EntityBaseModel<VendedorEntity> implements IVendedor {
   @Column('int')
-  @ApiProperty()
-  @IsNotEmpty()
+  @Field()
   codigo: number;
 
-  @ApiProperty()
-  @IsNotEmpty()
+  @Field()
   @Column('text')
   nome: string;
 }

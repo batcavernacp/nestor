@@ -1,20 +1,14 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsUUID } from 'class-validator';
 import { IJumbo } from '../../jumbo/jumbo.interface';
+import { Field, ID, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class CreateBobinaDto {
-  @ApiProperty()
-  @IsNumber()
-  @IsNotEmpty()
+  @Field()
   largura: number;
 
-  @ApiProperty()
-  @IsNumber()
-  @IsNotEmpty()
+  @Field()
   comprimento: number;
 
-  @ApiProperty({ type: () => String, format: 'uuid' })
-  @IsUUID()
-  @IsNotEmpty()
+  @Field(() => ID)
   jumbo: IJumbo;
 }

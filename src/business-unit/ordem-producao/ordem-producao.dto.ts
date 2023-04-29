@@ -1,10 +1,8 @@
-import { IsArray, IsNotEmpty } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
 import { IPedido } from '../pedido/pedido.interface';
+import { Field, ID, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class OrdemProducaoDto {
-  @IsArray()
-  @ApiProperty({ type: 'array', items: { type: 'string', format: 'uuid' } })
-  @IsNotEmpty()
+  @Field(() => [ID])
   pedidos: IPedido[];
 }

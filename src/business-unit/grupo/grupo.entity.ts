@@ -4,7 +4,7 @@ import { IGrupo } from './grupo.interface';
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @Entity({ name: 'grupos' })
-@ObjectType()
+@ObjectType('Grupo')
 export class GrupoEntity extends EntityBaseModel<GrupoEntity> implements IGrupo {
   @Column('int')
   @Field()

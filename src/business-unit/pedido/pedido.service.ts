@@ -12,6 +12,10 @@ export class PedidoService {
   ) {}
 
   create(pedido: PedidoDto) {
-    return this.pedidoRepository.save(new PedidoEntity(pedido));
+    return this.pedidoRepository.save(pedido);
+  }
+
+  findAll() {
+    return this.pedidoRepository.find();
   }
 }

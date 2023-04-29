@@ -1,14 +1,10 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Field, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class CreateClienteDto {
-  @ApiProperty()
-  @IsNumber()
-  @IsNotEmpty()
+  @Field()
   codigo: number;
 
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
+  @Field()
   nome: string;
 }

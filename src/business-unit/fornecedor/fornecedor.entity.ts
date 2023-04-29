@@ -4,7 +4,7 @@ import { IFornecedor } from './fornecedor.interface';
 import { Field, ObjectType } from '@nestjs/graphql';
 
 @Entity({ name: 'fornecedores' })
-@ObjectType()
+@ObjectType('Fornecedor')
 export class FornecedorEntity extends EntityBaseModel<FornecedorEntity> implements IFornecedor {
   @Column('int')
   @Field()
