@@ -1,10 +1,11 @@
 import { Catch, ExceptionFilter, ArgumentsHost, HttpException, HttpStatus } from '@nestjs/common';
 import { HttpAdapterHost, AbstractHttpAdapter } from '@nestjs/core';
+import { MetricsService } from '../metrics/metrics.service';
 @Catch()
-export class HttpExceptionFilter<T> implements ExceptionFilter {
+export class HttpExceptionFilter implements ExceptionFilter {
   private httpAdapter: AbstractHttpAdapter;
 
-  constructor(adapterHost: HttpAdapterHost) {
+  constructor(adapterHost: HttpAdapterHost, private readonly metricsService: MetricsService) {
     this.httpAdapter = adapterHost.httpAdapter;
   }
 
@@ -28,6 +29,8 @@ export class HttpExceptionFilter<T> implements ExceptionFilter {
               path: requisicao.path,
             },
           };
+
+    this.metricsService.error(requisicao.route.path, requisicao.method, status, exception.message);
 
     this.httpAdapter.reply(resposta, body, status);
   }

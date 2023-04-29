@@ -11,6 +11,11 @@ import { makeCounterProvider } from '@willsoto/nestjs-prometheus';
       help: 'contador de chamadas',
       labelNames: ['uri', 'method'],
     }),
+    makeCounterProvider({
+      name: 'error_count',
+      help: 'contador de error',
+      labelNames: ['uri', 'method', 'code', 'message'],
+    }),
   ],
   exports: [MetricsService],
 })
