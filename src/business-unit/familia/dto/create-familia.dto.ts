@@ -1,14 +1,10 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Field, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class CreateFamiliaDto {
-  @ApiProperty()
-  @IsNumber()
-  @IsNotEmpty()
+  @Field()
   codigo: number;
 
-  @IsString()
-  @ApiProperty()
-  @IsNotEmpty()
+  @Field()
   nome: string;
 }
