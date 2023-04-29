@@ -1,4 +1,4 @@
-import { Body, Inject, Post } from '@nestjs/common';
+import { Body, Inject } from '@nestjs/common';
 import { EntradaService } from './entrada.service';
 import { EntradaDto } from './entrada.dto';
 import { Mutation, Query } from '@nestjs/graphql';

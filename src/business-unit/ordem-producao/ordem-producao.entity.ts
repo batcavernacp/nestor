@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, OneToMany } from 'typeorm';
+import { Entity, OneToMany } from 'typeorm';
 import { EntityBaseModel } from '../../common/entity/entity-base.model';
 import { IOrdemProducao } from './ordem-producao.interface';
 import { IPedido } from '../pedido/pedido.interface';
