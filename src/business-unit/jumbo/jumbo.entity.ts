@@ -1,4 +1,4 @@
-import { Entity, Column, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { EntityBaseModel } from '../../common/entity/entity-base.model';
 import { IJumbo } from './jumbo.interface';
 import { IFamilia } from '../familia/familia.interface';
@@ -6,33 +6,44 @@ import { FamiliaEntity } from '../familia/familia.entity';
 import { GrupoEntity } from '../grupo/grupo.entity';
 import { IGrupo } from '../grupo/grupo.interface';
 import { FornecedorEntity } from '../fornecedor/fornecedor.entity';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { IFornecedor } from '../fornecedor/fornecedor.interface';
 
 @Entity({ name: 'jumbos' })
+@ObjectType()
 export class JumboEntity extends EntityBaseModel<JumboEntity> implements IJumbo {
   @Column('int')
+  @Field()
   codigo: number;
 
   @Column('text')
+  @Field()
   nome: string;
 
   @Column('text')
+  @Field()
   referencia: string;
 
   @Column('int')
+  @Field()
   comprimento: number;
 
   @Column('int')
+  @Field()
   largura: number;
 
-  @ManyToOne(() => FamiliaEntity)
+  @ManyToOne(() => FamiliaEntity, { eager: true })
   @JoinColumn()
+  @Field(() => FamiliaEntity)
   familia: IFamilia;
 
-  @ManyToOne(() => GrupoEntity)
+  @ManyToOne(() => GrupoEntity, { eager: true })
   @JoinColumn()
+  @Field(() => GrupoEntity)
   grupo: IGrupo;
 
-  @ManyToOne(() => FornecedorEntity)
+  @ManyToOne(() => FornecedorEntity, { eager: true })
   @JoinColumn()
-  fornecedor: FornecedorEntity;
+  @Field(() => FornecedorEntity)
+  fornecedor: IFornecedor;
 }

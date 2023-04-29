@@ -12,6 +12,10 @@ export class JumboService {
   ) {}
 
   create(jumbo: JumboDto) {
-    return this.jumboRepository.save(new JumboEntity(jumbo));
+    return this.jumboRepository.save(jumbo);
+  }
+
+  findAll(): Promise<JumboEntity[]> {
+    return this.jumboRepository.find();
   }
 }

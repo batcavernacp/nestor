@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { JumboService } from './jumbo.service';
-import { JumboController } from './jumbo.controller';
+import { JumboResolver } from './jumbo.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JumboEntity } from './jumbo.entity';
+import { GrupoModule } from '../grupo/grupo.module';
 
 @Module({
   imports: [TypeOrmModule.forFeature([JumboEntity])],
-  providers: [JumboService],
-  controllers: [JumboController],
+  providers: [JumboService, JumboResolver],
 })
 export class JumboModule {}

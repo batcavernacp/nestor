@@ -1,47 +1,31 @@
-import { IsNotEmpty, IsNumber, IsString, IsUUID } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
 import { IFamilia } from '../familia/familia.interface';
 import { IGrupo } from '../grupo/grupo.interface';
 import { IFornecedor } from '../fornecedor/fornecedor.interface';
+import { Field, ID, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class JumboDto {
-  @ApiProperty()
-  @IsNumber()
-  @IsNotEmpty()
+  @Field(() => ID)
   codigo: number;
 
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
+  @Field()
   nome: string;
 
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
+  @Field()
   referencia: string;
 
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
+  @Field()
   comprimento: number;
 
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
+  @Field()
   largura: number;
 
-  @ApiProperty({ type: 'string', format: 'uuid' })
-  @IsUUID()
-  @IsNotEmpty()
+  @Field(() => ID)
   familia: IFamilia;
 
-  @ApiProperty({ type: 'string', format: 'uuid' })
-  @IsUUID()
-  @IsNotEmpty()
+  @Field(() => ID)
   grupo: IGrupo;
 
-  @ApiProperty({ type: 'string', format: 'uuid' })
-  @IsUUID()
-  @IsNotEmpty()
+  @Field(() => ID)
   fornecedor: IFornecedor;
 }
