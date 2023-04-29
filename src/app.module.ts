@@ -4,6 +4,7 @@ import { BusinessUnitModule } from './business-unit/business-unit.module';
 import { ConfigModule } from '@nestjs/config';
 import { CommonModule } from './common/common.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { GraphqlModule } from './config/graphql/graphql.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     PostgresModule,
     BusinessUnitModule,
     CommonModule,
+    GraphqlModule,
   ],
   controllers: [],
   providers: [
