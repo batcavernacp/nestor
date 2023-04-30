@@ -1,8 +1,8 @@
-import { BobinaEntity } from '../bobina/bobina.entity';
 import { calculateCheckDigitForGTIN } from 'gtin-validator';
-import { JumboEntity } from '../jumbo/jumbo.entity';
+import { IJumbo } from '../jumbo/jumbo.interface';
+import { IBobina } from '../bobina/bobina.interface';
 
-export const gerarCodigoBarrasBobina = (bobina: BobinaEntity): string => {
+export const gerarCodigoBarrasBobina = (bobina: IBobina): string => {
   /*
   A Composição do Código de Barras depente de alguns critérios, a base dele seria inicialmente:
     111 + TT + LLL + CCCC + X onde:
@@ -33,7 +33,7 @@ export const gerarCodigoBarrasBobina = (bobina: BobinaEntity): string => {
   return codigo + calculateCheckDigitForGTIN(codigo);
 };
 
-export const gerarCodigoBarrasJumbo = (jumbo: JumboEntity): string => {
+export const gerarCodigoBarrasJumbo = (jumbo: IJumbo): string => {
   /*
       - JUMBO COM MENOS DE 1000 METROS DE COMPRIMENTO:
     99 + TT + LLLL + CCC + 9 + X

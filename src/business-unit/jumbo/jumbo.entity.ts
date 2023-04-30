@@ -32,20 +32,29 @@ export class JumboEntity extends EntityBaseModel<JumboEntity> implements IJumbo 
   @Field()
   largura: number;
 
-  @ManyToOne(() => FamiliaEntity, { eager: true })
-  @JoinColumn()
+  @ManyToOne(() => FamiliaEntity)
+  @JoinColumn({ name: 'familia_id' })
   @Field(() => FamiliaEntity)
   familia: IFamilia;
 
-  @ManyToOne(() => GrupoEntity, { eager: true })
-  @JoinColumn()
+  @Column('text')
+  familia_id: string;
+
+  @ManyToOne(() => GrupoEntity)
+  @JoinColumn({ name: 'grupo_id' })
   @Field(() => GrupoEntity)
   grupo: IGrupo;
 
-  @ManyToOne(() => FornecedorEntity, { eager: true })
-  @JoinColumn()
+  @Column('text') //TODO
+  grupo_id: string;
+
+  @ManyToOne(() => FornecedorEntity)
+  @JoinColumn({ name: 'fornecedor_id' })
   @Field(() => FornecedorEntity)
   fornecedor: IFornecedor;
+
+  @Column('text') //TODO
+  fornecedor_id: string;
 
   @Field()
   codigoBarra: string;

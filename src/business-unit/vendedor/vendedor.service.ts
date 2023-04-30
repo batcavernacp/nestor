@@ -18,4 +18,8 @@ export class VendedorService {
   findAll(): Promise<VendedorEntity[]> {
     return this.vendedorRepository.find();
   }
+
+  findById(id: string): Promise<VendedorEntity> {
+    return this.vendedorRepository.findOneBy({ id });
+  }
 }

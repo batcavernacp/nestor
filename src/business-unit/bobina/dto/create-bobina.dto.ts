@@ -1,4 +1,3 @@
-import { IJumbo } from '../../jumbo/jumbo.interface';
 import { Field, ID, InputType } from '@nestjs/graphql';
 
 @InputType()
@@ -10,5 +9,5 @@ export class CreateBobinaDto {
   comprimento: number;
 
   @Field(() => ID)
-  jumbo: IJumbo;
+  jumbo_id: string;
 }

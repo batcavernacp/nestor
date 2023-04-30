@@ -19,14 +19,20 @@ export class PedidoEntity extends EntityBaseModel<PedidoEntity> implements IPedi
   sequencia: number;
 
   @ManyToOne(() => VendedorEntity)
-  @JoinColumn()
+  @JoinColumn({ name: 'vendedor_id' })
   @Field(() => VendedorEntity)
   vendedor: IVendedor;
 
+  @Column('text')
+  vendedor_id: string;
+
   @ManyToOne(() => ClienteEntity)
-  @JoinColumn()
+  @JoinColumn({ name: 'cliente_id' })
   @Field(() => ClienteEntity)
   cliente: ICliente;
+
+  @Column('text')
+  cliente_id: string;
 
   @Field(() => [MovimentoEntity])
   @OneToMany(() => MovimentoEntity, (movimento) => movimento.pedido)
@@ -34,6 +40,9 @@ export class PedidoEntity extends EntityBaseModel<PedidoEntity> implements IPedi
 
   @Field(() => OrdemProducaoEntity, { nullable: true })
   @ManyToOne(() => OrdemProducaoEntity, { nullable: true })
-  @JoinColumn()
+  @JoinColumn({ name: 'ordem_producao_id' })
   ordemProducao: IOrdemProducao;
+
+  @Column('text', { nullable: true })
+  ordem_producao_id: string;
 }

@@ -16,10 +16,13 @@ export class BobinaEntity extends EntityBaseModel<BobinaEntity> implements IBobi
   @Field()
   comprimento: number;
 
-  @ManyToOne(() => JumboEntity, { eager: true })
-  @JoinColumn()
+  @ManyToOne(() => JumboEntity)
+  @JoinColumn({ name: 'jumbo_id' })
   @Field(() => JumboEntity)
   jumbo: IJumbo;
+
+  @Column('text')
+  jumbo_id: string;
 
   @Field()
   codigoBarra: string;

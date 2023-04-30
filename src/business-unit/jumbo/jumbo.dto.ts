@@ -1,6 +1,3 @@
-import { IFamilia } from '../familia/familia.interface';
-import { IGrupo } from '../grupo/grupo.interface';
-import { IFornecedor } from '../fornecedor/fornecedor.interface';
 import { Field, ID, InputType } from '@nestjs/graphql';
 
 @InputType()
@@ -21,11 +18,11 @@ export class JumboDto {
   largura: number;
 
   @Field(() => ID)
-  familia: IFamilia;
+  familia_id: string;
 
   @Field(() => ID)
-  grupo: IGrupo;
+  grupo_id: string;
 
   @Field(() => ID)
-  fornecedor: IFornecedor;
+  fornecedor_id: string;
 }

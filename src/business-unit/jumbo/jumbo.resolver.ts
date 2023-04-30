@@ -7,11 +7,7 @@ import { CodigoBarrasService } from '../codigo-barras/codigo-barras.service';
 
 @Resolver(() => JumboEntity)
 export class JumboResolver {
-  constructor(
-    @Inject(JumboService) private readonly jumboService: JumboService,
-    @Inject(forwardRef(() => CodigoBarrasService))
-    private readonly codigoBarrasService: CodigoBarrasService,
-  ) {}
+  constructor(@Inject(JumboService) private readonly jumboService: JumboService) {}
 
   @Mutation(() => JumboEntity)
   createJumbo(@Args('jumbo') jumbo: JumboDto) {
@@ -21,10 +17,5 @@ export class JumboResolver {
   @Query(() => [JumboEntity])
   jumbos() {
     return this.jumboService.findAll();
-  }
-
-  @ResolveField(() => String)
-  async codigoBarra(@Parent() jumbo: JumboEntity) {
-    return this.codigoBarrasService.gerarCodigoBarrasJumbo(jumbo);
   }
 }

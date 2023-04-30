@@ -10,17 +10,23 @@ import { Field, ObjectType } from '@nestjs/graphql';
 @Entity({ name: 'movimentos' })
 @ObjectType('Movimento')
 export class MovimentoEntity extends EntityBaseModel<MovimentoEntity> implements IMovimento {
-  @ManyToOne(() => BobinaEntity, { eager: true })
-  @JoinColumn()
+  @ManyToOne(() => BobinaEntity)
+  @JoinColumn({ name: 'bobina_id' })
   @Field(() => BobinaEntity)
   bobina: IBobina;
+
+  @Column('text')
+  bobina_id: string;
 
   @Column('int')
   @Field()
   quantidade: number;
 
-  @ManyToOne(() => PedidoEntity, { eager: true })
-  @JoinColumn()
+  @ManyToOne(() => PedidoEntity)
+  @JoinColumn({ name: 'pedido_id' })
   @Field(() => PedidoEntity)
   pedido: IPedido;
+
+  @Column('text')
+  pedido_id: string;
 }

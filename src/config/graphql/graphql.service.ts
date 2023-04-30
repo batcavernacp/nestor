@@ -10,6 +10,9 @@ export class GraphqlService implements GqlOptionsFactory {
       autoSchemaFile: 'schema.gql',
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      context: () => ({
+        teste: 123,
+      }),
     };
   }
 }

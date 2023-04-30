@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { MovimentoEntity } from './movimento.entity';
 import { MovimentoDto } from './movimento.dto';
 
@@ -16,6 +16,11 @@ export class MovimentoService {
   }
 
   findAll() {
+    this.movimentoRepository.find({ where: { id: In([1, 2, 3]) } });
     return this.movimentoRepository.find();
+  }
+
+  findByPedidoId(pedido_id: string) {
+    return this.movimentoRepository.find({ where: { pedido_id } });
   }
 }

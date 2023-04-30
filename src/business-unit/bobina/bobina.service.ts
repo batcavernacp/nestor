@@ -1,18 +1,14 @@
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BobinaEntity } from './bobina.entity';
 import { CreateBobinaDto } from './dto/create-bobina.dto';
-import { CodigoBarrasService } from '../codigo-barras/codigo-barras.service';
 
 @Injectable()
 export class BobinaService {
   constructor(
     @InjectRepository(BobinaEntity)
     private bobinaRepository: Repository<BobinaEntity>,
-
-    @Inject(forwardRef(() => CodigoBarrasService))
-    private readonly codigoBarrasService: CodigoBarrasService,
   ) {}
 
   findAll() {
@@ -20,7 +16,7 @@ export class BobinaService {
   }
 
   findOne(id: string) {
-    return this.bobinaRepository.findOneBy({ id });
+    return this.bobinaRepository.findOne({ where: { id }, select: {} });
   }
 
   create(bobina: CreateBobinaDto) {

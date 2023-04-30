@@ -1,9 +1,11 @@
 import { VendedorService } from './vendedor.service';
 import { VendedorDto } from './vendedor.dto';
-import { Args, Mutation, Query } from '@nestjs/graphql';
+import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { VendedorEntity } from './vendedor.entity';
 import { Inject } from '@nestjs/common';
+import { PedidoEntity } from '../pedido/pedido.entity';
 
+@Resolver(() => PedidoEntity)
 export class VendedorResolver {
   constructor(@Inject(VendedorService) private readonly vendedorService: VendedorService) {}
 
@@ -15,5 +17,10 @@ export class VendedorResolver {
   @Query(() => [VendedorEntity])
   vendedores() {
     return this.vendedorService.findAll();
+  }
+
+  @ResolveField(() => VendedorEntity)
+  vendedor(@Parent() pedido: PedidoEntity) {
+    return this.vendedorService.findById(pedido.vendedor_id);
   }
 }

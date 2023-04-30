@@ -1,10 +1,9 @@
-import { IJumbo } from '../jumbo/jumbo.interface';
 import { Field, ID, InputType } from '@nestjs/graphql';
 
 @InputType()
 export class EntradaDto {
   @Field(() => ID)
-  jumbo: IJumbo;
+  jumbo_id: string;
 
   @Field()
   quantidade: number;

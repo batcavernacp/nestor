@@ -1,17 +1,13 @@
-import { forwardRef, Inject } from '@nestjs/common';
+import { Inject } from '@nestjs/common';
 import { BobinaService } from './bobina.service';
 import { BobinaEntity } from './bobina.entity';
 import { CreateBobinaDto } from './dto/create-bobina.dto';
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { CodigoBarrasService } from '../codigo-barras/codigo-barras.service';
+import { MovimentoEntity } from '../movimento/movimento.entity';
 
-@Resolver(() => BobinaEntity)
+@Resolver(() => MovimentoEntity)
 export class BobinaResolver {
-  constructor(
-    @Inject(BobinaService) private readonly bobinaService: BobinaService, // @Inject(JumboService) private readonly jumboService: JumboService,
-    @Inject(forwardRef(() => CodigoBarrasService))
-    private readonly codigoBarrasService: CodigoBarrasService,
-  ) {}
+  constructor(@Inject(BobinaService) private readonly bobinaService: BobinaService) {}
 
   @Query(() => [BobinaEntity])
   bobinas(): Promise<BobinaEntity[]> {
@@ -19,7 +15,7 @@ export class BobinaResolver {
   }
 
   @Query(() => BobinaEntity)
-  bobina(@Args('id') id: string) {
+  bobinaById(@Args('id') id: string) {
     return this.bobinaService.findOne(id);
   }
 
@@ -28,8 +24,8 @@ export class BobinaResolver {
     return this.bobinaService.create(bobina);
   }
 
-  @ResolveField(() => String)
-  async codigoBarra(@Parent() bobina: BobinaEntity) {
-    return this.codigoBarrasService.gerarCodigoBarrasBobina(bobina);
+  @ResolveField(() => BobinaResolver)
+  bobina(@Parent() { bobina_id }: MovimentoEntity) {
+    return this.bobinaService.findOne(bobina_id);
   }
 }

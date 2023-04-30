@@ -9,9 +9,12 @@ import { Field, ObjectType } from '@nestjs/graphql';
 @ObjectType('Entrada')
 export class EntradaEntity extends EntityBaseModel<EntradaEntity> implements IEntrada {
   @ManyToOne(() => JumboEntity, { eager: true })
-  @JoinColumn()
+  @JoinColumn({ name: 'jumbo_id' })
   @Field(() => JumboEntity)
   jumbo: IJumbo;
+
+  @Column('text')
+  jumbo_id: string;
 
   @Column('int')
   @Field()

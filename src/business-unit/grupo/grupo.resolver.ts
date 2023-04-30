@@ -1,9 +1,11 @@
 import { Inject } from '@nestjs/common';
 import { GrupoService } from './grupo.service';
 import { GrupoDto } from './grupo.dto';
-import { Args, Mutation, Query } from '@nestjs/graphql';
+import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { GrupoEntity } from './grupo.entity';
+import { JumboEntity } from '../jumbo/jumbo.entity';
 
+@Resolver(() => JumboEntity)
 export class GrupoResolver {
   constructor(@Inject(GrupoService) private readonly grupoService: GrupoService) {}
 
@@ -13,7 +15,13 @@ export class GrupoResolver {
   }
 
   @Query(() => [GrupoEntity])
-  grupos() {
+  grupos(@Context('teste') teste: number) {
+    console.log(teste);
     return this.grupoService.findAll();
+  }
+
+  @ResolveField(() => GrupoEntity)
+  async jumbo(@Parent() { grupo_id }: JumboEntity) {
+    return this.grupoService.findById(grupo_id);
   }
 }

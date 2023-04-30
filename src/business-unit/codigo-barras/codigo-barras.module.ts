@@ -1,11 +1,11 @@
-import { forwardRef, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { CodigoBarrasService } from './codigo-barras.service';
 import { JumboModule } from '../jumbo/jumbo.module';
-import { BobinaModule } from '../bobina/bobina.module';
+import { CodigoBarrasJumboResolver } from './codigo-barras-jumbo.resolver';
+import { CodigoBarrasBobinaResolver } from './codigo-barras-bobina.resolver';
 
 @Module({
-  imports: [forwardRef(() => JumboModule), forwardRef(() => BobinaModule)],
-  providers: [CodigoBarrasService],
-  exports: [CodigoBarrasService],
+  imports: [JumboModule],
+  providers: [CodigoBarrasService, CodigoBarrasJumboResolver, CodigoBarrasBobinaResolver],
 })
 export class CodigoBarrasModule {}

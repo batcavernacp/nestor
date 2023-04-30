@@ -1,9 +1,12 @@
 import { FamiliaService } from './familia.service';
 import { FamiliaEntity } from './familia.entity';
 import { CreateFamiliaDto } from './dto/create-familia.dto';
-import { Args, Mutation, Query } from '@nestjs/graphql';
+import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
+import { JumboEntity } from '../jumbo/jumbo.entity';
+import { BobinaEntity } from '../bobina/bobina.entity';
 
+@Resolver(() => JumboEntity)
 export class FamiliaResolver {
   constructor(@Inject(FamiliaService) private readonly familiaService: FamiliaService) {}
 
@@ -31,5 +34,10 @@ export class FamiliaResolver {
   deleteFamilia(@Args('id') id: string) {
     console.log(id);
     return this.familiaService.delete(id);
+  }
+
+  @ResolveField(() => FamiliaEntity)
+  async jumbo(@Parent() { familia_id }: JumboEntity) {
+    return this.familiaService.findOne(familia_id);
   }
 }

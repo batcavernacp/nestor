@@ -1,15 +1,13 @@
-import { IBobina } from '../bobina/bobina.interface';
-import { IPedido } from '../pedido/pedido.interface';
 import { Field, ID, InputType } from '@nestjs/graphql';
 
 @InputType()
 export class MovimentoDto {
   @Field(() => ID)
-  bobina: IBobina;
+  bobina_id: string;
 
   @Field()
   quantidade: number;
 
   @Field(() => ID)
-  pedido: IPedido;
+  pedido_id: string;
 }

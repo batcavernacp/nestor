@@ -9,10 +9,10 @@ export class PedidoDto {
   sequencia: number;
 
   @Field(() => ID)
-  vendedor: IVendedor;
+  vendedor_id: string;
 
   @Field(() => ID)
-  cliente: ICliente;
+  cliente_id: string;
 
   @Field(() => [ID])
   movimentos: IMovimento[];
