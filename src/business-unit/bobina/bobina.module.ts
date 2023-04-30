@@ -1,12 +1,13 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { BobinaService } from './bobina.service';
 import { BobinaResolver } from './bobina.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BobinaEntity } from './bobina.entity';
-import { JumboModule } from '../jumbo/jumbo.module';
+import { CodigoBarrasModule } from '../codigo-barras/codigo-barras.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([BobinaEntity]), JumboModule],
+  imports: [TypeOrmModule.forFeature([BobinaEntity]), forwardRef(() => CodigoBarrasModule)],
   providers: [BobinaService, BobinaResolver],
+  exports: [BobinaService],
 })
 export class BobinaModule {}

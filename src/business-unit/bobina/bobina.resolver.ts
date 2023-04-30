@@ -1,16 +1,16 @@
-import { Inject } from '@nestjs/common';
+import { forwardRef, Inject } from '@nestjs/common';
 import { BobinaService } from './bobina.service';
 import { BobinaEntity } from './bobina.entity';
 import { CreateBobinaDto } from './dto/create-bobina.dto';
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { JumboService } from '../jumbo/jumbo.service';
-import { gerarCodigoBarras } from '../codigo-barras/gerar-codigo-barras';
+import { CodigoBarrasService } from '../codigo-barras/codigo-barras.service';
 
 @Resolver(() => BobinaEntity)
 export class BobinaResolver {
   constructor(
-    @Inject(BobinaService) private readonly bobinaService: BobinaService,
-    @Inject(JumboService) private readonly jumboService: JumboService,
+    @Inject(BobinaService) private readonly bobinaService: BobinaService, // @Inject(JumboService) private readonly jumboService: JumboService,
+    @Inject(forwardRef(() => CodigoBarrasService))
+    private readonly codigoBarrasService: CodigoBarrasService,
   ) {}
 
   @Query(() => [BobinaEntity])
@@ -30,9 +30,6 @@ export class BobinaResolver {
 
   @ResolveField(() => String)
   async codigoBarra(@Parent() bobina: BobinaEntity) {
-    if (typeof bobina.jumbo === 'string') {
-      bobina.jumbo = await this.jumboService.findOne(bobina.jumbo);
-    }
-    return gerarCodigoBarras(bobina);
+    return this.codigoBarrasService.gerarCodigoBarrasBobina(bobina);
   }
 }

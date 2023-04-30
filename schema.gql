@@ -35,14 +35,15 @@ type Jumbo {
   id: String!
   createdAt: DateTime!
   updateAt: DateTime!
-  codigo: Float!
+  codigo: String!
   nome: String!
-  referencia: String!
+  referencia: Float!
   comprimento: Float!
   largura: Float!
   familia: Familia!
   grupo: Grupo!
   fornecedor: Fornecedor!
+  codigoBarra: String!
 }
 
 type Bobina {
@@ -146,9 +147,9 @@ input CreateBobinaDto {
 }
 
 input JumboDto {
-  codigo: ID!
+  codigo: String!
   nome: String!
-  referencia: String!
+  referencia: Float!
   comprimento: Float!
   largura: Float!
   familia: ID!

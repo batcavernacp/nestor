@@ -10,6 +10,7 @@ import { MovimentoModule } from './movimento/movimento.module';
 import { OrdemProducaoModule } from './ordem-producao/ordem-producao.module';
 import { PedidoModule } from './pedido/pedido.module';
 import { VendedorModule } from './vendedor/vendedor.module';
+import { CodigoBarrasModule } from './codigo-barras/codigo-barras.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { VendedorModule } from './vendedor/vendedor.module';
     OrdemProducaoModule,
     PedidoModule,
     VendedorModule,
+    CodigoBarrasModule,
   ],
   controllers: [],
   providers: [],

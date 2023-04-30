@@ -12,17 +12,17 @@ import { IFornecedor } from '../fornecedor/fornecedor.interface';
 @Entity({ name: 'jumbos' })
 @ObjectType('Jumbo')
 export class JumboEntity extends EntityBaseModel<JumboEntity> implements IJumbo {
-  @Column('int')
+  @Column('text')
   @Field()
-  codigo: number;
+  codigo: string;
 
   @Column('text')
   @Field()
   nome: string;
 
-  @Column('text')
+  @Column('int')
   @Field()
-  referencia: string;
+  referencia: number;
 
   @Column('int')
   @Field()
@@ -46,4 +46,7 @@ export class JumboEntity extends EntityBaseModel<JumboEntity> implements IJumbo 
   @JoinColumn()
   @Field(() => FornecedorEntity)
   fornecedor: IFornecedor;
+
+  @Field()
+  codigoBarra: string;
 }

@@ -5,14 +5,14 @@ import { Field, ID, InputType } from '@nestjs/graphql';
 
 @InputType()
 export class JumboDto {
-  @Field(() => ID)
-  codigo: number;
+  @Field()
+  codigo: string;
 
   @Field()
   nome: string;
 
   @Field()
-  referencia: string;
+  referencia: number;
 
   @Field()
   comprimento: number;
